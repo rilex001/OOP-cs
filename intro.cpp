@@ -25,6 +25,6 @@ int main()
 	Employee employee1 = Employee("Nikola", "RilexYT", 25);
 	employee1.IntroduceYourself();
 
-	Employee employee2 = Employee("John", "Amazzon", 24);
+	Employee employee2 = Employee("Marko", "Tehnomedija", 44);
 	employee2.IntroduceYourself();
 }
