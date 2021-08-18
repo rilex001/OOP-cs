@@ -22,7 +22,7 @@ public:
 
 int main()
 {
-	Employee employee1 = Employee("Nikola", "RilexYT", 25);
+	Employee employee1 = Employee("Nikola", "PMF", 19);
 	employee1.IntroduceYourself();
 
 	Employee employee2 = Employee("Marko", "Tehnomedija", 44);
