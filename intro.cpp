@@ -8,10 +8,10 @@ class AbstractEmployee {
 class Employee:AbstractEmployee {
 
 private: 
-	string Name;
 	string Company;
 	int Age;
-
+protected: 
+	string Name;
 public:
 	
 	void setName(string name) {
@@ -51,10 +51,13 @@ public:
 		else
 			std::cout << Name << ", Sorry no promotion for you! " << std::endl;
 	}
+	virtual void Work() {
+		std::cout << Name << " is checking email, task backlog, perfoming task..." << std::endl;
+	}
 
 };
 
-class  Developer:Employee {
+class  Developer:public Employee {
 
 public:
 	string FavProgrammingLanguage;
@@ -63,7 +66,28 @@ public:
 	{
 		FavProgrammingLanguage = favProgrammingLanguage;
 	}
+	void FixBug() {
+		std::cout << Name << " fixed bug using " << FavProgrammingLanguage << std::endl;
+	}
+	void Work() {
+		std::cout << Name << " is writting..." << FavProgrammingLanguage << " code" << std::endl;
+	}
+};
 
+class Teacher:public Employee {
+public:
+	string Subject;
+	void PrepareLesson() {
+		std::cout << Name << " is preparing " << Subject << " lesson " << std::endl;
+	}
+	Teacher(string name, string company, int age, string subject)
+		:Employee(name, company, age)
+	{
+		Subject = subject;
+	}
+	void Work() {
+		std::cout << Name << " is teaching " << Subject << std::endl;
+	}
 };
 
 int main()
@@ -77,4 +101,20 @@ int main()
 //	employee1.AskForPromotion();
 
 	Developer d = Developer("Marko", "Tehnomedija", 44, "Javascript");
+//	d.FixBug();
+//	d.AskForPromotion();
+
+	Teacher t = Teacher("Jack", "Faculty", 28, "Math");
+//    t.PrepareLesson();
+//    t.AskForPromotion();
+
+//	d.Work();
+//	t.Work();
+
+	Employee* e1 = &d;
+	Employee* e2 = &t;
+
+	e1->Work();
+	e2->Work();
+
 }
